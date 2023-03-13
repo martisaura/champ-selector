@@ -7,7 +7,7 @@
 #include <sstream>
 using namespace std;
 
-enum dmg_type { heavy_ad, ad, ap, heavy_ap, hybrid, truedmg };
+enum dmg_type { heavy_ad, ad, ap, heavy_ap, hybrid, truedmg, support};
 enum health_type { tank, bruiser, squishy };
 enum rol { top, jungle, mid, adc, support };
 
@@ -22,12 +22,13 @@ vector <champ> roster;
 
 int main()
 {   //hay que implementar que dmg y health sean vector bool solo k me da pereza ahora mismo.
-    //un champ puede tener multiples builds (blitz hard ap squishy // normal ap tank)
+    //un champ puede tener multiples builds (blitz hard ap squishy // normal ap tank incluso ad bruiser somehow broken champ)
+    //tambien caldria implementar algo k relacione las builds(si blitz va ap k el juego reconozca k es squishy)
     ifstream fin;
 
     //Cada linea ha de contener esta info separada por espacios: 
     //nombre del champ
-    //dmg type - had 1,ad 2,ap 3,hap 4,hyb 5,true 6
+    //dmg type - had 1,ad 2,ap 3,hap 4,hyb 5,true 6, support 7
     //health type - tk 1 br 2 sq 3
     // numero de rols del champ
     //rol - top jgl mid adc sup   (pot tenir mes d'un rol) (separats per un espai)
@@ -64,6 +65,9 @@ int main()
                 break;
             case 6:
                 temp.damage = truedmg;
+                break;
+            case 7:
+                temp.damage = support;
                 break;
         }
 
